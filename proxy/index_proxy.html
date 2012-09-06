@@ -1,0 +1,315 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Proxy Checker</title>
+	
+<link rel="stylesheet" type="text/css" href="css/default_dark_light.css" />
+
+<!--[if IE 7]>
+<link rel="stylesheet" type="text/css" href="css/ie.css" />
+<![endif]-->	
+
+<!--[if IE 8]>
+<link rel="stylesheet" type="text/css" href="css/ie.css" />
+<![endif]-->
+    
+<!-- Anything Slider -->
+<link rel="stylesheet" type="text/css" href="css/theme-main.css" />    
+
+<!-- FancyBox CSS -->
+<link rel="stylesheet" type="text/css" href="css/jquery.fancybox-1.3.4.css" media="screen" />
+
+<!-- colorpicker CSS -->
+<link rel="stylesheet" media="screen" type="text/css" href="css/colorpicker.css" />
+
+<script src="js/jquery.js" type="text/javascript"></script>
+<script src="js/jquery-ui-1.8.16.custom.min.js" type="text/javascript"></script>
+
+
+
+<!-- js/custom.js includes all custom js function which used in theme -->
+<script src="js/custom.js" type="text/javascript"></script>
+
+<!-- hoverIntent.js is plugin for hover effect -->
+<script src="js/hoverIntent.js" type="text/javascript"></script>
+
+<!-- For Cufon font replacement -->
+<script src="js/cufon-yui.js" type="text/javascript"></script>
+<script src="js/kalinga.font.js" type="text/javascript"></script>
+
+<!-- For Fancy Popup -->
+<script src="js/jquery.mousewheel-3.0.4.pack.js" type="text/javascript"></script>
+<script src="js/jquery.fancybox-1.3.4.pack.js" type="text/javascript"></script>
+
+<!-- Anything Slider -->
+<script src="js/jquery.anythingslider.js" type="text/javascript"></script>
+
+<!-- Color Picker, this file will use only for Settings left pannel for actual site you dont have to include this file -->
+<script src="js/colorpicker.js" type="text/javascript"></script>
+
+
+<!-- AnythingSlider initialization -->
+	<script type="text/javascript">
+		// DOM Ready
+		$(function(){
+		
+			// this is AnyThingSlider initialization for more settings option visit: http://proloser.github.com/AnythingSlider/ 
+			$('#slider').anythingSlider({
+			
+					theme               : "main",
+					autoPlay            : true,
+					buildStartStop      : false,
+					navigationFormatter : null,
+					toggleArrows        : false,     // If true, side navigation arrows will slide out on hovering and hide @ other times
+				  	toggleControls      : false,     // if true, slide in controls (navigation + play/stop button) on hover and slide change, hide @ other times
+					pauseOnHover        : true,
+					resizeContents      : true,
+					easing              : "easeInOutBack",
+	 				animationTime       : 1400       // we can change delay here					     
+					
+					//Note:  to change the height of Slider please go to css/theme-main.css and change height of "div.anythingSlider-main" class					
+			});
+			
+
+	
+			
+						
+		// this is fancybox ( image overlay ) initialization for more option visit: http://fancybox.net/
+		// Auto Play youtube with fancy box : please ad " &autoplay=1 " at the end of youtube video url
+		$(".fancyBox").fancybox({
+				'overlayShow'	: true
+		});
+			
+		// this is fancybox ( video overlay ) initialization for youtube video for more option visit: http://fancybox.net/
+		$(".video_fancybox").click(function() {
+		$.fancybox({
+				'padding'		: 0,
+				'autoScale'		: false,
+				'transitionIn'	: 'none',
+				'transitionOut'	: 'none',
+				'title'			: this.title,
+				'width'		: 680,
+				'height'		: 495,
+				'href'			: this.href.replace(new RegExp("watch\\?v=", "i"), 'v/'),
+				'type'			: 'swf',
+				'swf'			: {
+				'wmode'		: 'transparent',
+				'allowfullscreen'	: 'true'
+				}
+			});
+	
+			return false;
+		});			
+			
+
+		// this is fancybox ( grouped image overlay ) initialization for more option visit: http://fancybox.net/
+		$("a[rel=group_fancybox]").fancybox({
+				'transitionIn'		: 'none',
+				'transitionOut'		: 'none',
+				'titlePosition' 	: 'over',
+				'titleFormat'		: function(title, currentArray, currentIndex, currentOpts) {
+					return '<span id="fancybox-title-over">'+ title +' <cite> Image' + (currentIndex + 1) + ' / ' + currentArray.length + (title.length ? '' : '') + '</cite></span>';
+				}
+		});
+
+			
+		});
+	</script>
+<script type="text/javascript" language="Javascript" src="http://malsup.github.com/jquery.form.js"></script>
+<script type="text/javascript" language="Javascript" src="js/jquery.text-effects.js"></script>
+<script type="text/javascript"> 
+$(document).ready(function() { 
+    var options = { 
+        target:        '#response',   // target element(s) to be updated with server response 
+         beforeSubmit:  showRequest,
+        success:       showResponse  // post-submit callback
+
+
+    }; 
+         
+    // bind form using 'ajaxForm' 
+    $('#check').ajaxForm(options); 
+    
+
+  });
+  function showRequest(formData, jqForm, options) { 
+  
+ $("#loading").html("<h2>Please Wait<span id='typ'>...</span></h2>");
+ $("#response").html("<h1>Loading...</h1>");
+
+ $("#typ").typewriter();
+    return true; 
+} 
+ function showResponse(responseText, statusText, xhr, $form)  { 
+    $("#loading").html("");
+    var $anchor = $("#page_LatestProjects");
+ $('html, body').stop().animate({
+                        scrollTop: $($anchor).offset().top
+                    }, 1500,'easeInOutExpo');
+        $("#toS").scrambledWriter();
+  }
+
+
+ 
+    </script> 
+    
+</head>   
+ 
+<body>
+
+<div class="wrapper">
+<!-- 
+	class="leftPanel" this div contain left panle and its Static  
+	class="leftPanel_inner" this div contain background of left panel
+    class="leftPanel_inner_border" this div contain right border of left panel
+-->
+<div class="leftPanel">
+	<div class="leftPanel_inner">
+		<div class="leftPanel_inner_border">    
+    		<div class="logo_container">
+            	<img alt="Yasyf Mohamedali" src="http://cache.yasyf.com/images/logo_body.png" />
+            </div>
+    		<p class="intro_text">
+Proxy Checker            </p>            
+
+<!-- //////////////////////////////////////////// Left Navigation Start //////////////////////////////////////////////////// -->            
+            <ul class="nav_bar">
+                <!--  <li><a><span> use these tags for every menu item -->            
+            	<li class="active_link"><a href="#page_Home"><span>Begin</span></a></li>                
+            		<li><a href="#page_LatestProjects"><span>Results</span></a></li>
+            	
+            </ul>
+<!-- ///////////////////////////////////////////// Left Navigation End ///////////////////////////////////////////////////// -->
+            
+            <div class="socialIcon"> 
+                <!--  there are 40 social bookmark icons you can use as many as you want all 40 are listed below with there classes -->
+                
+               <!-- <a class="facebook" title="facebook" href="javascript:void(0)"><span></span></a>
+				<a class="digg2" title="digg" href="javascript:void(0)"><span></span></a>                                                
+            	<a class="rss" title="rss" href="javascript:void(0)"><span></span></a>
+                <a class="linkedin" title="linkedin" href="javascript:void(0)"><span></span></a>
+                <a class="twitter2" title="twitter" href="javascript:void(0)"><span></span></a> -->
+                                
+				<!--            	
+				List of all avilable icons you can use these
+                
+
+                <a class="aim" title="aim" href="javascript:void(0)"><span></span></a>
+                <a class="amazon" title="amazon" href="javascript:void(0)"><span></span></a>
+                <a class="buzzyahoo" title="buzzyahoo" href="javascript:void(0)"><span></span></a>
+            	<a class="delicious" title="delicious" href="javascript:void(0)"><span></span></a>                
+				<a class="deviantart" title="deviantart" href="javascript:void(0)"><span></span></a>
+                <a class="digg1" title="digg" href="javascript:void(0)"><span></span></a>                
+                <a class="dribble" title="dribble" href="javascript:void(0)"><span></span></a>                
+                <a class="flickr" title="flickr" href="javascript:void(0)"><span></span></a>
+            	<a class="fffound" title="ffound" href="javascript:void(0)"><span></span></a>
+                <a class="fireeagle" title="fireeagle" href="javascript:void(0)"><span></span></a>
+            	<a class="googletalk" title="googletalk" href="javascript:void(0)"><span></span></a>
+                <a class="itunes" title="itunes" href="javascript:void(0)"><span></span></a>
+                <a class="lastfm" title="lastfm" href="javascript:void(0)"><span></span></a>
+                <a class="google" title="google" href="javascript:void(0)"><span></span></a>
+            	<a class="messendertahoo" title="messenger yahoo" href="javascript:void(0)"><span></span></a>
+            	<a class="messenger" title="messenger" href="javascript:void(0)"><span></span></a>
+                <a class="myspace" title="myspace" href="javascript:void(0)"><span></span></a>
+                <a class="netvibes" title="netvibes" href="javascript:void(0)"><span></span></a>
+            	<a class="openid" title="openid" href="javascript:void(0)"><span></span></a>
+            	<a class="orkut" title="orkut" href="javascript:void(0)"><span></span></a>
+                <a class="picasa" title="picasa" href="javascript:void(0)"><span></span></a>
+                <a class="reddit" title="reddit" href="javascript:void(0)"><span></span></a>
+                <a class="shareit" title="shareit" href="javascript:void(0)"><span></span></a>
+                <a class="skype" title="skype" href="javascript:void(0)"><span></span></a>
+                <a class="stumbleupon" title="stumbleupon" href="javascript:void(0)"><span></span></a>
+                <a class="technorati" title="technorati" href="javascript:void(0)"><span></span></a>
+            	<a class="tumbrl" title="tumbrl" href="javascript:void(0)"><span></span></a>
+            	<a class="twitter" title="twitter" href="javascript:void(0)"><span></span></a>
+                <a class="upcoming" title="upcoming" href="javascript:void(0)"><span></span></a>
+            	<a class="vcard" title="vcard" href="javascript:void(0)"><span></span></a>
+            	<a class="vimeo" title="vimeo" href="javascript:void(0)"><span></span></a>
+                <a class="wikipedia" title="wikipedia" href="javascript:void(0)"><span></span></a>
+                <a class="yahoo" title="yahoo" href="javascript:void(0)"><span></span></a>
+            	<a class="yelp" title="yelp" href="javascript:void(0)"><span></span></a>
+                <a class="youtube" title="youtube" href="javascript:void(0)"><span></span></a>
+                -->
+                
+
+            </div>
+            
+  		</div>
+    </div>
+</div>
+
+
+
+<div class="rightPanel">
+	<div class="rightPannelInner">
+
+
+
+<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+<!-- //////////////////////////////////////////// Home container Start//////////////////////////////////////////////////// -->
+<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+        <div id="page_Home">        	
+            <center>
+            <!--  this is place for home text if you want you can add any type of text or content here or remove this part if you dont need -->
+            
+            <div id="loading">
+            </div>
+            
+            <br /><br /><br /><br /><br /><br /><br /><br />
+            
+            <p class="padding2">
+<h2>Enter One Proxy Per Line</h2>
+<form id="check" action="check.php" method="POST" >
+<textarea cols="100" rows="5" name="urls" style="background-color : #F7F2E0;"></textarea>
+<br /><br />
+<input type="image" src="http://www.nateriggs.com/wp-content/uploads/2012/02/submit-button.png" value="Submit" alt="Submit">
+
+</form>            </p>
+            
+            <div class="page_saperator"></div>
+            </center>
+        </div>
+        
+
+<!--////////////////////////////////////////////// Home container End //////////////////////////////////////////////////// -->
+
+
+
+
+
+
+<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+<!-- //////////////////////////////////////////// Latest Project container Start ///////////////////////////////////////// -->
+<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+        <div id="page_LatestProjects" class="paddingTop40">
+        <center>
+        	   <div class="page_title">
+               <h2 id="toS">Latest Results</h2>
+            </div>
+           <div id="response" class="response"></div>
+            
+            <br /><br /><br />
+
+            </center>
+        </div>
+        
+<!-- ///////////////////////////////////////////// Latest Project container End ////////////////////////////////////////// -->
+
+
+
+
+
+
+
+
+
+
+
+</div>
+</body>
+</html>
